@@ -1,0 +1,13 @@
+<!-- using structural directive -->
+<!-- <ul>
+  <li *ngFor="let user of users">
+    {{user.id}} - {{user.username}}
+  </li>
+</ul> -->
+
+<!-- using angular control flow -->
+<ul>
+  @for (user of users; track user.id) {
+  <li>{{ user.username }}</li>
+  }
+</ul>

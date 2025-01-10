@@ -33,7 +33,8 @@ namespace API.Controllers
             context.Users.Add(user);
             await context.SaveChangesAsync();
 
-            return new UserDto{
+            return new UserDto
+            {
                 Username = user.Username,
                 Token = tokenService.CreateToken(user)
             };
@@ -47,7 +48,7 @@ namespace API.Controllers
             var user = await context.Users.
             FirstOrDefaultAsync(x => x.Username == loginDto.Username.ToLower());
 
-            if (user == null) return Unauthorized("user not found");
+            if (user == null) return Unauthorized("invalid username");
 
             using var hmac = new HMACSHA512(user.PasswordSalt);
 
@@ -58,7 +59,8 @@ namespace API.Controllers
 
                 if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("invalid password");
             }
-            return new UserDto{
+            return new UserDto
+            {
                 Username = user.Username,
                 Token = tokenService.CreateToken(user)
             };

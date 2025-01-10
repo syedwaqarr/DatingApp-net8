@@ -1,13 +1,12 @@
-<!-- using structural directive -->
-<!-- <ul>
-  <li *ngFor="let user of users">
-    {{user.id}} - {{user.username}}
-  </li>
-</ul> -->
+<app-nav></app-nav>
 
-<!-- using angular control flow -->
-<ul>
-  @for (user of users; track user.id) {
-  <li>{{ user.username }}</li>
-  }
-</ul>
+<div class="container" style="margin-top: 100px;">
+
+<!-- render home component -->
+<!-- <app-home></app-home> -->
+
+<!-- since we want dynamically render the components defined in the app.routes.ts file, 
+so we add router-outlet -->
+
+<router-outlet></router-outlet>
+</div>
